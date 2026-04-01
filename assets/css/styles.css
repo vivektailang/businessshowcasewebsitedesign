@@ -66,6 +66,64 @@ footer{background: linear-gradient(90deg, rgba(3,8,25,1) 0%, rgba(7,18,54,1) 100
 /* Ensure hero button stands out */
 .hero .btn-light{background:linear-gradient(90deg,#ffffff 0%, #f1f7ff 100%);color:#071236;border:0}
 
+/* Header menu hover: subtle background change + 3D lift illusion for desktop/hover-capable devices */
+.nav-menu .nav-item{position:relative}
+
+@media (hover: hover) and (min-width: 768px){
+  .nav-menu .nav-item .nav-link{
+    display:inline-block;
+    position:relative;
+    padding:.5rem .75rem;
+    border-radius:10px;
+    transition:transform .22s cubic-bezier(.2,.9,.2,1), box-shadow .22s ease, background .18s ease;
+    transform-origin:center bottom;
+    will-change:transform, box-shadow;
+  }
+
+  /* Hover and focus produce a lifted, slightly rotated 3D appearance */
+  .nav-menu .nav-item .nav-link:hover,
+  .nav-menu .nav-item .nav-link:focus{
+    background: linear-gradient(180deg, rgba(255,255,255,0.06) 0%, rgba(255,255,255,0.02) 100%);
+    transform: translateY(-6px) rotateX(6deg);
+    box-shadow: 0 18px 30px rgba(2,6,23,0.32), 0 6px 18px rgba(7,18,54,0.18);
+    color: #ffffff;
+  }
+
+  /* A soft fake shadow pseudo-element below the link adds depth */
+  .nav-menu .nav-item .nav-link::after{
+    content: '';
+    position: absolute;
+    left: 8px;
+    right: 8px;
+    bottom: -8px;
+    height: 8px;
+    border-radius: 6px;
+    background: radial-gradient(ellipse at center, rgba(2,6,23,0.28) 0%, rgba(2,6,23,0.08) 60%, transparent 100%);
+    filter: blur(6px);
+    opacity: 0;
+    transform: translateY(0);
+    transition: opacity .18s ease, transform .22s ease;
+    pointer-events: none;
+    z-index: -1;
+  }
+
+  .nav-menu .nav-item .nav-link:hover::after,
+  .nav-menu .nav-item .nav-link:focus::after{
+    opacity: 1;
+    transform: translateY(6px);
+  }
+
+  /* Keep keyboard users visible focus but avoid double outlines */
+  .nav-menu .nav-item .nav-link:focus{outline: none}
+  .nav-menu .nav-item .nav-link:focus-visible{box-shadow: 0 0 0 4px rgba(43,108,204,0.14), 0 12px 24px rgba(2,6,23,0.18)}
+}
+
+/* Mobile: keep simple highlight on tap */
+@media (max-width:767px){
+  .nav-menu .nav-item .nav-link{padding:.5rem .5rem;border-radius:6px}
+  .nav-menu .nav-item .nav-link:active{background: rgba(255,255,255,0.04)}
+}
+
 /* Keep other site rules (animations, lightbox, navbar behavior) intact */
 
 body{font-family: var(--body-font);} 
