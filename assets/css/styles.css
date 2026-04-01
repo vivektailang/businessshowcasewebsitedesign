@@ -76,6 +76,16 @@ footer{background: linear-gradient(90deg, rgba(3,8,25,1) 0%, rgba(7,18,54,1) 100
   .gallery-caption{transition:none}
 }
 
+/* Touch devices: captions can't be hovered, so show them statically */
+@media (hover: none){
+  .gallery-grid figure .gallery-caption{
+    opacity:1;
+    transform:translateY(0);
+    background:linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.58) 100%);
+    color:#fff;
+  }
+}
+
 /* Gallery tiles sit on dark background; captions should be light */
 .gallery-caption{color:#fff}
 
@@ -170,22 +180,49 @@ body{font-family: var(--body-font);}
 
 @media (max-width:576px){
   .product-card img{height:120px}
+
+  /* Hero: tighten up on very small screens */
+  .hero .display-5{font-size:1.75rem;line-height:1.25}
+  .hero .lead{font-size:1rem}
+  .hero .container{padding-top:1.5rem !important;padding-bottom:1.5rem !important}
+
+  /* Contact: stack neatly with spacing */
+  #contact .row > div{margin-bottom:.5rem}
+
+  /* Lightbox close button easy thumb tap */
+  .lightbox-close{font-size:2.5rem;top:.5rem;right:.75rem;padding:.25rem .5rem}
 }
 
 /* CSS-only navbar */
-.navbar{display:flex;align-items:center;justify-content:space-between;padding:0.5rem 0;}
+.navbar{display:flex;align-items:center;justify-content:space-between;padding:0.5rem 0;position:relative}
 .nav-menu{display:flex;gap:0.5rem;align-items:center;margin:0;padding:0;list-style:none}
 .nav-menu .nav-item .nav-link{padding:0.25rem 0.5rem}
 
 /* Hide the checkbox visually */
 .nav-toggle{position:absolute;left:-9999px}
-.nav-toggle-label{display:none;flex-direction:column;gap:4px;width:36px;height:30px;cursor:pointer}
-.nav-toggle-label span{display:block;height:3px;background:#333;border-radius:2px}
+.nav-toggle-label{display:none;flex-direction:column;gap:4px;width:36px;height:30px;cursor:pointer;position:relative;z-index:201}
+/* White bars so the hamburger is visible on the dark header */
+.nav-toggle-label span{display:block;height:3px;background:#eaf3ff;border-radius:2px}
 
 @media (max-width:992px){
   .nav-toggle-label{display:flex}
-  .nav-menu{position:absolute;right:1rem;top:64px;flex-direction:column;background:var(--bg,white);padding:0.75rem;border-radius:8px;box-shadow:0 6px 18px rgba(0,0,0,.08);display:none}
+  /* Dropdown sits above page content; dark background so white text stays readable */
+  .nav-menu{
+    position:absolute;right:1rem;top:calc(100% + 4px);
+    flex-direction:column;
+    background:linear-gradient(135deg,#0b1f3a 0%,#071236 100%);
+    padding:0.75rem 1rem;border-radius:10px;
+    box-shadow:0 8px 24px rgba(2,6,23,0.45);
+    display:none;z-index:200;
+    min-width:180px;
+    border:1px solid rgba(255,255,255,0.08);
+  }
   .nav-menu .nav-item{margin:0.25rem 0}
+  /* Ensure link text is clearly readable inside the dark mobile dropdown */
+  .nav-menu .nav-item .nav-link{color:#eaf3ff !important;padding:.5rem .75rem;display:block;border-radius:6px}
+  .nav-menu .nav-item .nav-link:active{background:rgba(255,255,255,0.08)}
+  /* Keep the CTA Contact button styled on mobile */
+  .nav-menu .nav-item .nav-link.btn{background:linear-gradient(90deg,#2b6cff 0%,#5ea2ff 100%);color:#fff !important;margin-top:.25rem}
   .nav-toggle:checked + .nav-toggle-label + .nav-menu{display:flex}
 }
 
