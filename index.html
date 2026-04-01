@@ -256,5 +256,31 @@
     </div>
   </footer>
 
+  <!-- Scroll to top button -->
+  <button id="scroll-top-btn" class="scroll-top-btn" aria-label="Scroll back to top" title="Back to top">
+    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <polyline points="18 15 12 9 6 15"></polyline>
+    </svg>
+  </button>
+
+  <script>
+    (function(){
+      var btn = document.getElementById('scroll-top-btn');
+      var threshold = 300; // px scrolled before button appears
+
+      window.addEventListener('scroll', function(){
+        if (window.scrollY > threshold) {
+          btn.classList.add('visible');
+        } else {
+          btn.classList.remove('visible');
+        }
+      }, { passive: true });
+
+      btn.addEventListener('click', function(){
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    })();
+  </script>
+
 </body>
 </html>
