@@ -1,0 +1,24 @@
+:root{
+  --primary-color: #0d6efd; /* default bootstrap primary */
+  --brand-accent: #0b5ed7;
+  --heading-font: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+}
+
+body{font-family: var(--heading-font);}
+.hero{background: linear-gradient(180deg,var(--primary-color), #0b5ed7);} 
+.brand-name{font-weight:600}
+.site-header .navbar-brand img{border-radius:6px}
+
+/* Product card */
+.product-card img{height:160px;object-fit:cover}
+
+/* Gallery */
+.gallery-thumb{cursor:pointer;transition:transform .18s ease;background:white;border-radius:6px}
+.gallery-thumb:hover{transform:scale(1.02)}
+
+/* Utilities */
+.text-muted{opacity:.85}
+
+@media (max-width:576px){
+  .product-card img{height:120px}
+}

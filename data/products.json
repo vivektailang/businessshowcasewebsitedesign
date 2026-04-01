@@ -1,0 +1,42 @@
+{
+  "products": [
+    {
+      "id": "p1",
+      "title": "Executive Chair",
+      "shortDescription": "Comfortable, ergonomic chair for executive offices.",
+      "images": [
+        "assets/images/product-1.svg",
+        "assets/images/product-2.svg"
+      ],
+      "tags": ["furniture","office"]
+    },
+    {
+      "id": "p2",
+      "title": "Standing Desk",
+      "shortDescription": "Adjustable height desk for healthier work posture.",
+      "images": [
+        "assets/images/product-3.svg",
+        "assets/images/product-4.svg"
+      ],
+      "tags": ["furniture","health"]
+    },
+    {
+      "id": "p3",
+      "title": "Modern Lamp",
+      "shortDescription": "Sleek LED lamp with warm light and dimmer.",
+      "images": [
+        "assets/images/product-5.svg"
+      ],
+      "tags": ["lighting"]
+    },
+    {
+      "id": "p4",
+      "title": "Conference Table",
+      "shortDescription": "Large table designed for collaborative meetings.",
+      "images": [
+        "assets/images/product-6.svg"
+      ],
+      "tags": ["furniture","meeting"]
+    }
+  ]
+}
