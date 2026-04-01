@@ -4,7 +4,7 @@
   --heading-font: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
 }
 
-body{font-family: var(--heading-font);}
+body{font-family: var(--heading-font);} 
 .hero{background: linear-gradient(180deg,var(--primary-color), #0b5ed7);} 
 .brand-name{font-weight:600}
 .site-header .navbar-brand img{border-radius:6px}
@@ -22,3 +22,36 @@ body{font-family: var(--heading-font);}
 @media (max-width:576px){
   .product-card img{height:120px}
 }
+
+/* CSS-only navbar */
+.navbar{display:flex;align-items:center;justify-content:space-between;padding:0.5rem 0;}
+.nav-menu{display:flex;gap:0.5rem;align-items:center;margin:0;padding:0;list-style:none}
+.nav-menu .nav-item .nav-link{padding:0.25rem 0.5rem}
+
+/* Hide the checkbox visually */
+.nav-toggle{position:absolute;left:-9999px}
+.nav-toggle-label{display:none;flex-direction:column;gap:4px;width:36px;height:30px;cursor:pointer}
+.nav-toggle-label span{display:block;height:3px;background:#333;border-radius:2px}
+
+@media (max-width:992px){
+  .nav-toggle-label{display:flex}
+  .nav-menu{position:absolute;right:1rem;top:64px;flex-direction:column;background:var(--bg,white);padding:0.75rem;border-radius:8px;box-shadow:0 6px 18px rgba(0,0,0,.08);display:none}
+  .nav-menu .nav-item{margin:0.25rem 0}
+  .nav-toggle:checked + .nav-toggle-label + .nav-menu{display:flex}
+}
+
+/* CSS Lightbox using :target */
+.lightbox{position:fixed;inset:0;background:rgba(0,0,0,0.8);display:none;align-items:center;justify-content:center;padding:2rem;z-index:1050}
+.lightbox:target{display:flex}
+.lightbox-img{max-width:90vw;max-height:70vh;border-radius:8px;box-shadow:0 8px 30px rgba(0,0,0,.6)}
+.lightbox-close{position:absolute;top:1rem;right:1rem;color:white;font-size:2rem;text-decoration:none}
+.lightbox-caption{color:#e9eef8;margin-top:0.75rem;text-align:center}
+
+/* improve gallery grid */
+.gallery-grid .gallery-thumb{width:100%;height:160px;object-fit:contain;padding:0.5rem;background:#fff}
+@media (max-width:576px){
+  .gallery-grid .gallery-thumb{height:120px}
+}
+
+/* small adjustments */
+.card-footer{font-size:.85rem}
