@@ -1,57 +1,98 @@
 :root{
-  /* Night blue / white theme */
-  --primary-color: #071236;      /* deep night blue */
-  --brand-accent: #2b6cff;       /* bright blue accent */
-  --muted: rgba(255,255,255,0.82); /* default muted (for dark backgrounds) */
-  --card-muted: #6c757d;        /* muted color used inside white cards */
-  --bg: #ffffff;
+  /* ── Deep Aurora palette 2026 ── */
+  --primary-color: #050919;       /* deep space black-navy */
+  --brand-accent: #4f7cff;        /* vivid cornflower blue */
+  --accent-violet: #7c3aed;       /* electric violet */
+  --accent-cyan: #06b6d4;         /* electric cyan */
+  --accent-indigo: #4f46e5;       /* vivid indigo */
+  --muted: rgba(210,225,255,0.88); /* soft blue-white for dark BGs */
+  --card-muted: #5a6585;           /* muted inside light cards */
+  --bg: #f7f9ff;                   /* cool off-white */
   --heading-font: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
   --body-font: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif;
   --max-content-width: 1100px;
-  --surface-elev: rgba(255,255,255,0.04);
+  --surface-elev: rgba(255,255,255,0.05);
 }
 
-/* Global page background gradient */
+/* Global page background — deep space fixed so sections float over it */
 body{
   font-family: var(--body-font);
   color: var(--muted);
-  background: linear-gradient(180deg, var(--primary-color) 0%, #0b2545 100%);
+  background:
+    linear-gradient(160deg, #050919 0%, #0a0832 35%, #0b1845 65%, #07112e 100%);
+  background-attachment: fixed;
 }
 
 /* Constrain main content for improved reading rhythm */
 .container{max-width:var(--max-content-width)}
 
-/* Header (dark gradient) */
-.site-header{background: linear-gradient(90deg, rgba(2,6,23,0.92) 0%, rgba(7,18,54,0.92) 100%); color: #fff}
+/* Header — glassmorphism: translucent dark pane with backdrop blur */
+.site-header{
+  background: linear-gradient(90deg,
+    rgba(5,9,25,0.88) 0%,
+    rgba(14,8,52,0.88) 50%,
+    rgba(5,9,25,0.88) 100%);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid rgba(124,58,237,0.15) !important;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  color: #fff;
+}
 .site-header .navbar-brand .brand-name, .site-header .navbar-brand img{color:#fff}
 
-/* Hero (dark gradient) */
-.hero{background: linear-gradient(180deg, rgba(7,18,54,1) 0%, rgba(5,15,40,0.92) 100%);}
-.hero .display-5, .hero .lead{color: #ecf6ff}
+/* Hero — aurora mesh: violet glow left, cyan glow right, deep indigo base */
+.hero{
+  background:
+    radial-gradient(ellipse at 18% 55%, rgba(124,58,237,0.35) 0%, transparent 55%),
+    radial-gradient(ellipse at 82% 20%, rgba(6,182,212,0.22) 0%, transparent 52%),
+    radial-gradient(ellipse at 50% 100%, rgba(79,124,255,0.18) 0%, transparent 60%),
+    linear-gradient(135deg, #06082e 0%, #180f60 30%, #0d3590 60%, #071640 100%);
+}
+.hero .display-5, .hero .lead{color: #dde8ff}
 
-/* Products section (light gradient) */
-#products{background: linear-gradient(180deg,#ffffff 0%, #f4f9ff 100%); color: #0b1f3a}
+/* Products — cool periwinkle wash */
+#products{
+  background: linear-gradient(160deg, #f7f9ff 0%, #edf0ff 45%, #f0f6ff 100%);
+  color: #0d1240;
+}
 #products .text-muted{color:var(--card-muted);opacity:.9}
 
-/* Gallery section (dark gradient) */
-#gallery{background: linear-gradient(180deg, rgba(4,12,38,1) 0%, rgba(7,18,54,1) 100%); color:var(--muted)}
+/* Gallery — deep cosmos with violet shimmer */
+#gallery{
+  background:
+    radial-gradient(ellipse at 70% 85%, rgba(79,70,229,0.20) 0%, transparent 55%),
+    radial-gradient(ellipse at 15% 25%, rgba(6,182,212,0.12) 0%, transparent 50%),
+    linear-gradient(160deg, #040b1c 0%, #0c0830 45%, #060d22 100%);
+  color: var(--muted);
+}
 #gallery .text-muted{color:var(--muted)}
 
-/* Contact (light gradient) */
-#contact{background: linear-gradient(180deg,#ffffff 0%, #f4f9ff 100%); color:#0b1f3a}
+/* Contact — lighter periwinkle matching Products */
+#contact{
+  background: linear-gradient(160deg, #f7f9ff 0%, #eef2ff 100%);
+  color: #0d1240;
+}
 #contact .text-muted{color:var(--card-muted)}
 
-/* Footer (dark gradient) */
-footer{background: linear-gradient(90deg, rgba(3,8,25,1) 0%, rgba(7,18,54,1) 100%); color:#eaf3ff}
+/* Footer — very dark with warm violet undertone */
+footer{background: linear-gradient(135deg, #030610 0%, #0b0830 55%, #040f1e 100%); color:#b8c8f0}
 
-/* Brand accents and buttons */
+/* Brand accents and buttons — blue → violet (trending 2026) */
 .btn-primary{
-  background: linear-gradient(90deg,var(--brand-accent) 0%, #5ea2ff 100%);
-  border: none;color: #fff;box-shadow:0 6px 18px rgba(43,108,204,.12);
+  background: linear-gradient(90deg, #4f7cff 0%, #7c3aed 100%);
+  border: none;
+  color: #fff;
+  box-shadow: 0 6px 22px rgba(79,124,255,0.32);
+}
+.btn-primary:hover, .btn-primary:focus{
+  background: linear-gradient(90deg, #3d6bef 0%, #6d2bdb 100%);
+  box-shadow: 0 8px 28px rgba(79,124,255,0.45);
 }
 
-/* Cards and surfaces */
-.card{background: #fff;border-radius:10px;border:0;box-shadow:0 8px 28px rgba(3,6,23,.06);color:#0b1f3a}
+/* Cards — clean white with a subtle indigo tint shadow */
+.card{background: #fff;border-radius:12px;border:1px solid rgba(79,70,229,0.07);box-shadow:0 8px 32px rgba(13,18,64,.08);color:#0d1240}
 .card .card-title{color:#071236}
 .card .text-muted{color:var(--card-muted)}
 .card-footer{background:transparent;border-top:0}
@@ -94,7 +135,7 @@ footer{background: linear-gradient(90deg, rgba(3,8,25,1) 0%, rgba(7,18,54,1) 100
 .nav-menu .nav-link.btn{color:#fff}
 
 /* Ensure hero button stands out */
-.hero .btn-light{background:linear-gradient(90deg,#ffffff 0%, #f1f7ff 100%);color:#071236;border:0}
+.hero .btn-light{background:linear-gradient(90deg,#ffffff 0%, #e8eeff 100%);color:#0d1240;border:0;box-shadow:0 4px 18px rgba(255,255,255,0.15)}
 
 /* ── Header nav hover animations ── */
 .nav-menu .nav-item{position:relative}
@@ -139,14 +180,14 @@ footer{background: linear-gradient(90deg, rgba(3,8,25,1) 0%, rgba(7,18,54,1) 100
     right: 8px;
   }
 
-  /* CTA button hover: lift + glow */
+  /* CTA button hover: lift + violet glow */
   .nav-menu .nav-item .nav-link.btn{
     transition: transform .25s ease, box-shadow .25s ease;
   }
   .nav-menu .nav-item .nav-link.btn:hover,
   .nav-menu .nav-item .nav-link.btn:focus-visible{
     transform: translateY(-3px);
-    box-shadow: 0 8px 22px rgba(43,108,255,0.45);
+    box-shadow: 0 8px 24px rgba(124,58,237,0.50);
     outline: none;
   }
 }
@@ -164,8 +205,8 @@ body{font-family: var(--body-font);}
 /* Constrain main content for improved reading rhythm */
 .container{max-width:var(--max-content-width)}
 
-.hero{background: linear-gradient(180deg,var(--primary-color), var(--brand-accent));} 
-.brand-name{font-weight:700;letter-spacing:.2px;color:var(--primary-color)}
+/* hero duplicate kept for cascade; real gradient is on .hero above */
+.brand-name{font-weight:700;letter-spacing:.2px;color:#fff}
 .site-header .navbar-brand img{border-radius:6px}
 
 /* Product card */
@@ -210,19 +251,19 @@ body{font-family: var(--body-font);}
   .nav-menu{
     position:absolute;right:1rem;top:calc(100% + 4px);
     flex-direction:column;
-    background:linear-gradient(135deg,#0b1f3a 0%,#071236 100%);
-    padding:0.75rem 1rem;border-radius:10px;
-    box-shadow:0 8px 24px rgba(2,6,23,0.45);
+    background:linear-gradient(160deg, #08072a 0%, #100a40 60%, #060d28 100%);
+    padding:0.75rem 1rem;border-radius:12px;
+    box-shadow:0 12px 32px rgba(5,9,25,0.60), 0 0 0 1px rgba(124,58,237,0.14);
     display:none;z-index:200;
-    min-width:180px;
-    border:1px solid rgba(255,255,255,0.08);
+    min-width:185px;
+    border:1px solid rgba(124,58,237,0.12);
   }
   .nav-menu .nav-item{margin:0.25rem 0}
   /* Ensure link text is clearly readable inside the dark mobile dropdown */
   .nav-menu .nav-item .nav-link{color:#eaf3ff !important;padding:.5rem .75rem;display:block;border-radius:6px}
   .nav-menu .nav-item .nav-link:active{background:rgba(255,255,255,0.08)}
   /* Keep the CTA Contact button styled on mobile */
-  .nav-menu .nav-item .nav-link.btn{background:linear-gradient(90deg,#2b6cff 0%,#5ea2ff 100%);color:#fff !important;margin-top:.25rem}
+  .nav-menu .nav-item .nav-link.btn{background:linear-gradient(90deg,#4f7cff 0%,#7c3aed 100%);color:#fff !important;margin-top:.25rem;box-shadow:0 4px 14px rgba(79,124,255,0.35)}
   .nav-toggle:checked + .nav-toggle-label + .nav-menu{display:flex}
 }
 
@@ -335,9 +376,9 @@ footer:hover{transform:translateY(-2px)}
   display:flex;
   align-items:center;
   justify-content:center;
-  background:linear-gradient(135deg,#2b6cff 0%,#5ea2ff 100%);
+  background:linear-gradient(135deg,#4f7cff 0%,#7c3aed 100%);
   color:#fff;
-  box-shadow:0 6px 20px rgba(43,108,255,0.40);
+  box-shadow:0 6px 20px rgba(79,70,229,0.40);
   /* Hidden by default – pops in when .visible is added by JS */
   opacity:0;
   transform:translateY(20px) scale(0.85);
@@ -351,8 +392,8 @@ footer:hover{transform:translateY(-2px)}
   pointer-events:auto;
 }
 .scroll-top-btn:hover{
-  background:linear-gradient(135deg,#1a5cf0 0%,#4b93f7 100%);
-  box-shadow:0 10px 28px rgba(43,108,255,0.55);
+  background:linear-gradient(135deg,#3d6bef 0%,#6d2bdb 100%);
+  box-shadow:0 10px 30px rgba(124,58,237,0.55);
   transform:translateY(-3px) scale(1.06);
 }
 .scroll-top-btn:active{
