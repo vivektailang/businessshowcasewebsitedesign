@@ -1,23 +1,36 @@
 :root{
-  --primary-color: #0d6efd; /* default bootstrap primary */
-  --brand-accent: #0b5ed7;
+  --primary-color: #0d6efd; /* default bootstrap primary - replace with your brand primary */
+  --brand-accent: #0b5ed7; /* secondary accent */
+  --muted: #6c757d;
+  --bg: #ffffff;
   --heading-font: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  --body-font: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif;
+  --max-content-width: 1100px; /* site content max width for readability */
 }
 
-body{font-family: var(--heading-font);} 
-.hero{background: linear-gradient(180deg,var(--primary-color), #0b5ed7);} 
-.brand-name{font-weight:600}
+/* Branding & layout helpers
+   - Replace --primary-color and --brand-accent to match your brand palette.
+   - Consider adding a webfont (e.g., Inter, Source Sans) for a polished look; keep a fallback stack.
+*/
+
+body{font-family: var(--body-font);} 
+
+/* Constrain main content for improved reading rhythm */
+.container{max-width:var(--max-content-width)}
+
+.hero{background: linear-gradient(180deg,var(--primary-color), var(--brand-accent));} 
+.brand-name{font-weight:700;letter-spacing:.2px;color:var(--primary-color)}
 .site-header .navbar-brand img{border-radius:6px}
 
 /* Product card */
-.product-card img{height:160px;object-fit:cover}
+.product-card img{height:160px;object-fit:cover;width:100%}
 
 /* Gallery */
-.gallery-thumb{cursor:pointer;transition:transform .18s ease;background:white;border-radius:6px}
+.gallery-thumb{cursor:pointer;transition:transform .18s ease, box-shadow .18s ease;background:var(--bg);border-radius:6px}
 .gallery-thumb:hover{transform:scale(1.02)}
 
 /* Utilities */
-.text-muted{opacity:.85}
+.text-muted{color:var(--muted);opacity:.95}
 
 @media (max-width:576px){
   .product-card img{height:120px}
@@ -120,3 +133,12 @@ section:target{animation:fadeUp .38s cubic-bezier(.2,.9,.2,1) both;border-radius
 /* subtle footer rise on hover */
 footer{transition:transform .18s ease}
 footer:hover{transform:translateY(-2px)}
+
+/* Make gallery thumbnails a consistent square tile, show caption on hover for clarity */
+.gallery-grid figure{position:relative;overflow:hidden;border-radius:8px}
+.gallery-grid .gallery-thumb{width:100%;height:100%;object-fit:cover;display:block}
+.gallery-caption{position:absolute;left:0;right:0;bottom:0;padding:.5rem .6rem;background:linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,.56) 100%);color:#fff;font-size:.9rem;opacity:0;transform:translateY(6px);transition:opacity .18s ease, transform .18s ease}
+.gallery-grid figure:hover .gallery-caption, .gallery-grid figure:focus-within .gallery-caption{opacity:1;transform:translateY(0)}
+
+/* Ensure gallery figures have a consistent aspect ratio */
+.gallery-grid figure{aspect-ratio:1 / 1}

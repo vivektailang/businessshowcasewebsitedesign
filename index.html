@@ -9,18 +9,20 @@
   <!-- Bootstrap 5 CSS (only for utilities and layout) -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/styles.css">
+  <!-- Theme color for mobile browsers -->
+  <meta name="theme-color" content="#0d6efd">
 </head>
 <body>
   <header class="site-header bg-light border-bottom">
     <!-- CSS-only responsive navbar -->
-    <nav class="navbar container">
+    <nav class="navbar container" aria-label="Main navigation">
       <a class="navbar-brand d-flex align-items-center" href="#">
         <img src="assets/images/logo.svg" alt="Brand logo" width="48" height="48" class="me-2">
         <span class="brand-name">Your Company</span>
       </a>
 
       <input type="checkbox" id="nav-toggle" class="nav-toggle" aria-hidden="true">
-      <label for="nav-toggle" class="nav-toggle-label" aria-hidden="true">
+      <label for="nav-toggle" class="nav-toggle-label" aria-hidden="true" aria-label="Toggle navigation">
         <span></span>
         <span></span>
         <span></span>
@@ -44,7 +46,8 @@
             <p><a href="#gallery" class="btn btn-light btn-lg">View Catalog</a></p>
           </div>
           <div class="col-lg-5 d-none d-lg-block">
-            <img src="assets/images/product-1.svg" alt="Product sample" class="img-fluid shadow-sm rounded">
+            <!-- Decorative/hero image; lazy-load to improve initial rendering -->
+            <img src="assets/images/product-1.svg" alt="Product sample" class="img-fluid shadow-sm rounded" loading="lazy">
           </div>
         </div>
       </div>
@@ -55,56 +58,73 @@
         <h2 class="mb-4">Products & Services</h2>
         <p class="text-muted">Short summaries highlighting benefits and use-cases. Keep them concise so visitors can scan quickly.</p>
 
+        <!--
+          To update products: copy the ARTICLE block below and replace image path, title, description and tags.
+          Template (includes schema.org microdata):
+          <article class="col-sm-6 col-md-4 col-lg-3" itemscope itemtype="http://schema.org/Product">
+            <div class="card product-card h-100">
+              <img src="assets/images/your-image.svg" loading="lazy" class="card-img-top" alt="Product name" itemprop="image">
+              <div class="card-body">
+                <h3 class="h5 card-title" itemprop="name">Product Name</h3>
+                <p class="card-text text-muted" itemprop="description">Short product description.</p>
+              </div>
+              <div class="card-footer bg-white">
+                <small class="text-muted">Tags: <span itemprop="category">example</span></small>
+              </div>
+            </div>
+          </article>
+        -->
+
         <div class="row g-4 mt-3">
-          <!-- Static product cards generated from data/products.json -->
-          <article class="col-sm-6 col-md-4 col-lg-3">
+          <!-- Static product cards with schema.org markup -->
+          <article class="col-sm-6 col-md-4 col-lg-3" itemscope itemtype="http://schema.org/Product">
             <div class="card product-card h-100">
-              <img src="assets/images/product-1.svg" class="card-img-top" alt="Executive Chair">
+              <img src="assets/images/product-1.svg" class="card-img-top" alt="Executive Chair" loading="lazy" itemprop="image">
               <div class="card-body">
-                <h3 class="h5 card-title">Executive Chair</h3>
-                <p class="card-text text-muted">Comfortable, ergonomic chair for executive offices.</p>
+                <h3 class="h5 card-title" itemprop="name">Executive Chair</h3>
+                <p class="card-text text-muted" itemprop="description">Comfortable, ergonomic chair for executive offices.</p>
               </div>
               <div class="card-footer bg-white">
-                <small class="text-muted">Tags: furniture, office</small>
+                <small class="text-muted">Tags: <span itemprop="category">furniture</span>, <span itemprop="category">office</span></small>
               </div>
             </div>
           </article>
 
-          <article class="col-sm-6 col-md-4 col-lg-3">
+          <article class="col-sm-6 col-md-4 col-lg-3" itemscope itemtype="http://schema.org/Product">
             <div class="card product-card h-100">
-              <img src="assets/images/product-3.svg" class="card-img-top" alt="Standing Desk">
+              <img src="assets/images/product-3.svg" class="card-img-top" alt="Standing Desk" loading="lazy" itemprop="image">
               <div class="card-body">
-                <h3 class="h5 card-title">Standing Desk</h3>
-                <p class="card-text text-muted">Adjustable height desk for healthier work posture.</p>
+                <h3 class="h5 card-title" itemprop="name">Standing Desk</h3>
+                <p class="card-text text-muted" itemprop="description">Adjustable height desk for healthier work posture.</p>
               </div>
               <div class="card-footer bg-white">
-                <small class="text-muted">Tags: furniture, health</small>
+                <small class="text-muted">Tags: <span itemprop="category">furniture</span>, <span itemprop="category">health</span></small>
               </div>
             </div>
           </article>
 
-          <article class="col-sm-6 col-md-4 col-lg-3">
+          <article class="col-sm-6 col-md-4 col-lg-3" itemscope itemtype="http://schema.org/Product">
             <div class="card product-card h-100">
-              <img src="assets/images/product-5.svg" class="card-img-top" alt="Modern Lamp">
+              <img src="assets/images/product-5.svg" class="card-img-top" alt="Modern Lamp" loading="lazy" itemprop="image">
               <div class="card-body">
-                <h3 class="h5 card-title">Modern Lamp</h3>
-                <p class="card-text text-muted">Sleek LED lamp with warm light and dimmer.</p>
+                <h3 class="h5 card-title" itemprop="name">Modern Lamp</h3>
+                <p class="card-text text-muted" itemprop="description">Sleek LED lamp with warm light and dimmer.</p>
               </div>
               <div class="card-footer bg-white">
-                <small class="text-muted">Tags: lighting</small>
+                <small class="text-muted">Tags: <span itemprop="category">lighting</span></small>
               </div>
             </div>
           </article>
 
-          <article class="col-sm-6 col-md-4 col-lg-3">
+          <article class="col-sm-6 col-md-4 col-lg-3" itemscope itemtype="http://schema.org/Product">
             <div class="card product-card h-100">
-              <img src="assets/images/product-6.svg" class="card-img-top" alt="Conference Table">
+              <img src="assets/images/product-6.svg" class="card-img-top" alt="Conference Table" loading="lazy" itemprop="image">
               <div class="card-body">
-                <h3 class="h5 card-title">Conference Table</h3>
-                <p class="card-text text-muted">Large table designed for collaborative meetings.</p>
+                <h3 class="h5 card-title" itemprop="name">Conference Table</h3>
+                <p class="card-text text-muted" itemprop="description">Large table designed for collaborative meetings.</p>
               </div>
               <div class="card-footer bg-white">
-                <small class="text-muted">Tags: furniture, meeting</small>
+                <small class="text-muted">Tags: <span itemprop="category">furniture</span>, <span itemprop="category">meeting</span></small>
               </div>
             </div>
           </article>
@@ -119,35 +139,53 @@
         <p class="text-muted">Click any thumbnail to view a larger image.</p>
 
         <div class="gallery-grid row g-3 mt-3">
-          <!-- Static thumbnails -->
+          <!-- Static thumbnails (loading="lazy" for performance). Each link contains a figure with a caption for clarity -->
           <div class="col-6 col-md-3">
-            <a href="#img1" class="gallery-link">
-              <img src="assets/images/product-1.svg" alt="Executive Chair" class="img-fluid rounded gallery-thumb">
+            <a href="#img1" class="gallery-link" aria-describedby="cap-img1">
+              <figure class="m-0">
+                <img src="assets/images/product-1.svg" alt="Executive Chair" class="img-fluid rounded gallery-thumb" loading="lazy">
+                <figcaption id="cap-img1" class="gallery-caption">Executive Chair</figcaption>
+              </figure>
             </a>
           </div>
           <div class="col-6 col-md-3">
-            <a href="#img2" class="gallery-link">
-              <img src="assets/images/product-2.svg" alt="Executive Chair - detail" class="img-fluid rounded gallery-thumb">
+            <a href="#img2" class="gallery-link" aria-describedby="cap-img2">
+              <figure class="m-0">
+                <img src="assets/images/product-2.svg" alt="Executive Chair - detail" class="img-fluid rounded gallery-thumb" loading="lazy">
+                <figcaption id="cap-img2" class="gallery-caption">Executive Chair — detail</figcaption>
+              </figure>
             </a>
           </div>
           <div class="col-6 col-md-3">
-            <a href="#img3" class="gallery-link">
-              <img src="assets/images/product-3.svg" alt="Standing Desk" class="img-fluid rounded gallery-thumb">
+            <a href="#img3" class="gallery-link" aria-describedby="cap-img3">
+              <figure class="m-0">
+                <img src="assets/images/product-3.svg" alt="Standing Desk" class="img-fluid rounded gallery-thumb" loading="lazy">
+                <figcaption id="cap-img3" class="gallery-caption">Standing Desk</figcaption>
+              </figure>
             </a>
           </div>
           <div class="col-6 col-md-3">
-            <a href="#img4" class="gallery-link">
-              <img src="assets/images/product-4.svg" alt="Standing Desk - detail" class="img-fluid rounded gallery-thumb">
+            <a href="#img4" class="gallery-link" aria-describedby="cap-img4">
+              <figure class="m-0">
+                <img src="assets/images/product-4.svg" alt="Standing Desk - detail" class="img-fluid rounded gallery-thumb" loading="lazy">
+                <figcaption id="cap-img4" class="gallery-caption">Standing Desk — detail</figcaption>
+              </figure>
             </a>
           </div>
           <div class="col-6 col-md-3">
-            <a href="#img5" class="gallery-link">
-              <img src="assets/images/product-5.svg" alt="Modern Lamp" class="img-fluid rounded gallery-thumb">
+            <a href="#img5" class="gallery-link" aria-describedby="cap-img5">
+              <figure class="m-0">
+                <img src="assets/images/product-5.svg" alt="Modern Lamp" class="img-fluid rounded gallery-thumb" loading="lazy">
+                <figcaption id="cap-img5" class="gallery-caption">Modern Lamp</figcaption>
+              </figure>
             </a>
           </div>
           <div class="col-6 col-md-3">
-            <a href="#img6" class="gallery-link">
-              <img src="assets/images/product-6.svg" alt="Conference Table" class="img-fluid rounded gallery-thumb">
+            <a href="#img6" class="gallery-link" aria-describedby="cap-img6">
+              <figure class="m-0">
+                <img src="assets/images/product-6.svg" alt="Conference Table" class="img-fluid rounded gallery-thumb" loading="lazy">
+                <figcaption id="cap-img6" class="gallery-caption">Conference Table</figcaption>
+              </figure>
             </a>
           </div>
         </div>
@@ -155,32 +193,32 @@
         <!-- CSS-only lightbox overlays using :target -->
         <div id="img1" class="lightbox">
           <a class="lightbox-close" href="#gallery">×</a>
-          <img src="assets/images/product-1.svg" alt="Executive Chair" class="lightbox-img">
+          <img src="assets/images/product-1.svg" alt="Executive Chair" class="lightbox-img" loading="lazy">
           <p class="lightbox-caption">Executive Chair — Comfortable, ergonomic chair for executive offices.</p>
         </div>
         <div id="img2" class="lightbox">
           <a class="lightbox-close" href="#gallery">×</a>
-          <img src="assets/images/product-2.svg" alt="Executive Chair - detail" class="lightbox-img">
+          <img src="assets/images/product-2.svg" alt="Executive Chair - detail" class="lightbox-img" loading="lazy">
           <p class="lightbox-caption">Executive Chair — Detail view.</p>
         </div>
         <div id="img3" class="lightbox">
           <a class="lightbox-close" href="#gallery">×</a>
-          <img src="assets/images/product-3.svg" alt="Standing Desk" class="lightbox-img">
+          <img src="assets/images/product-3.svg" alt="Standing Desk" class="lightbox-img" loading="lazy">
           <p class="lightbox-caption">Standing Desk — Adjustable height desk for healthier work posture.</p>
         </div>
         <div id="img4" class="lightbox">
           <a class="lightbox-close" href="#gallery">×</a>
-          <img src="assets/images/product-4.svg" alt="Standing Desk - detail" class="lightbox-img">
+          <img src="assets/images/product-4.svg" alt="Standing Desk - detail" class="lightbox-img" loading="lazy">
           <p class="lightbox-caption">Standing Desk — Detail view.</p>
         </div>
         <div id="img5" class="lightbox">
           <a class="lightbox-close" href="#gallery">×</a>
-          <img src="assets/images/product-5.svg" alt="Modern Lamp" class="lightbox-img">
+          <img src="assets/images/product-5.svg" alt="Modern Lamp" class="lightbox-img" loading="lazy">
           <p class="lightbox-caption">Modern Lamp — Sleek LED lamp with warm light and dimmer.</p>
         </div>
         <div id="img6" class="lightbox">
           <a class="lightbox-close" href="#gallery">×</a>
-          <img src="assets/images/product-6.svg" alt="Conference Table" class="lightbox-img">
+          <img src="assets/images/product-6.svg" alt="Conference Table" class="lightbox-img" loading="lazy">
           <p class="lightbox-caption">Conference Table — Large table designed for collaborative meetings.</p>
         </div>
 
