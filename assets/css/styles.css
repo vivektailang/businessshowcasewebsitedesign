@@ -55,3 +55,68 @@ body{font-family: var(--heading-font);}
 
 /* small adjustments */
 .card-footer{font-size:.85rem}
+
+/* Motion & animations */
+html{scroll-behavior:smooth}
+
+/* Respect user preference to reduce motion */
+@media (prefers-reduced-motion: reduce){
+  *{animation:none !important; transition:none !important}
+}
+
+/* Keyframes */
+@keyframes fadeUp{from{opacity:0; transform:translateY(10px)} to{opacity:1; transform:translateY(0)}}
+@keyframes cardIn{from{opacity:0; transform:translateY(14px) scale(.995)} to{opacity:1; transform:translateY(0) scale(1)}}
+@keyframes lightFade{from{opacity:0} to{opacity:1}}
+@keyframes navLineTop{to{transform:translateY(9px) rotate(45deg)}}
+@keyframes navLineMid{to{opacity:0}}
+@keyframes navLineBot{to{transform:translateY(-9px) rotate(-45deg)}}
+
+/* Hero entrance */
+.hero .display-5{animation:fadeUp .7s cubic-bezier(.2,.9,.2,1) both .12s}
+.hero .lead{animation:fadeUp .8s cubic-bezier(.2,.9,.2,1) both .24s}
+.hero .btn{animation:fadeUp .9s cubic-bezier(.2,.9,.2,1) both .36s}
+
+/* Product cards - staggered reveal on load */
+.row.g-4 > article{opacity:0; transform:translateY(12px); animation:cardIn .6s cubic-bezier(.2,.9,.2,1) both}
+.row.g-4 > article:nth-child(1){animation-delay:.08s}
+.row.g-4 > article:nth-child(2){animation-delay:.16s}
+.row.g-4 > article:nth-child(3){animation-delay:.24s}
+.row.g-4 > article:nth-child(4){animation-delay:.32s}
+.row.g-4 > article:nth-child(5){animation-delay:.40s}
+.row.g-4 > article:nth-child(6){animation-delay:.48s}
+.row.g-4 > article:nth-child(7){animation-delay:.56s}
+.row.g-4 > article:nth-child(8){animation-delay:.64s}
+
+/* Product hover micro-interaction */
+.product-card{transition:transform .22s ease, box-shadow .22s ease}
+.product-card:hover{transform:translateY(-6px);box-shadow:0 12px 30px rgba(3,6,23,.12)}
+
+/* Gallery thumbnails subtle pop and focus */
+.gallery-grid .gallery-thumb{transition:transform .22s ease, box-shadow .22s ease}
+.gallery-grid .gallery-thumb:focus,.gallery-grid .gallery-thumb:hover{transform:translateY(-6px) scale(1.02);box-shadow:0 10px 30px rgba(3,6,23,.12);outline:3px solid rgba(13,110,253,.12)}
+
+/* Stagger gallery thumbnails */
+.gallery-grid > div:nth-child(1) .gallery-thumb{animation:fadeUp .5s both .08s}
+.gallery-grid > div:nth-child(2) .gallery-thumb{animation:fadeUp .5s both .16s}
+.gallery-grid > div:nth-child(3) .gallery-thumb{animation:fadeUp .5s both .24s}
+.gallery-grid > div:nth-child(4) .gallery-thumb{animation:fadeUp .5s both .32s}
+.gallery-grid > div:nth-child(5) .gallery-thumb{animation:fadeUp .5s both .40s}
+.gallery-grid > div:nth-child(6) .gallery-thumb{animation:fadeUp .5s both .48s}
+
+/* Lightbox fades in */
+.lightbox:target{animation:lightFade .18s ease-out both}
+
+/* Animated hamburger -> X */
+.nav-toggle-label{transition:transform .25s ease}
+.nav-toggle-label span{transition:transform .25s ease, opacity .18s ease}
+.nav-toggle:checked + .nav-toggle-label span:first-child{transform:translateY(9px) rotate(45deg)}
+.nav-toggle:checked + .nav-toggle-label span:nth-child(2){opacity:0}
+.nav-toggle:checked + .nav-toggle-label span:last-child{transform:translateY(-9px) rotate(-45deg)}
+
+/* Section focus when navigated via anchor (#target) */
+section:target{animation:fadeUp .38s cubic-bezier(.2,.9,.2,1) both;border-radius:6px;padding:1rem}
+
+/* subtle footer rise on hover */
+footer{transition:transform .18s ease}
+footer:hover{transform:translateY(-2px)}
