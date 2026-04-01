@@ -189,11 +189,17 @@ section:target{animation:fadeUp .38s cubic-bezier(.2,.9,.2,1) both;border-radius
 footer{transition:transform .18s ease}
 footer:hover{transform:translateY(-2px)}
 
-/* Make gallery thumbnails a consistent square tile, show caption on hover for clarity */
-.gallery-grid figure{position:relative;overflow:hidden;border-radius:8px}
-.gallery-grid .gallery-thumb{width:100%;height:100%;object-fit:cover;display:block}
-.gallery-caption{position:absolute;left:0;right:0;bottom:0;padding:.5rem .6rem;background:linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,.56) 100%);color:#fff;font-size:.9rem;opacity:0;transform:translateY(6px);transition:opacity .18s ease, transform .18s ease}
-.gallery-grid figure:hover .gallery-caption, .gallery-grid figure:focus-within .gallery-caption{opacity:1;transform:translateY(0)}
+/* Make gallery links merge with the image box and center content */
+.gallery-grid > div{display:flex;align-items:center;justify-content:center;padding:.25rem}
+.gallery-link{display:block;width:100%;height:100%;color:inherit;text-decoration:none}
+.gallery-link:focus{outline:none}
 
-/* Ensure gallery figures have a consistent aspect ratio */
-.gallery-grid figure{aspect-ratio:1 / 1}
+/* Keep a visible but subtle focus ring for keyboard users */
+.gallery-link:focus-visible figure{box-shadow:0 0 0 4px rgba(43,108,204,0.16);border-radius:8px}
+
+/* Ensure figure fills the column and caption centers */
+.gallery-grid figure{width:100%;height:100%;margin:0;display:block}
+.gallery-caption{text-align:center}
+
+/* Prevent browser default visited/hover underline or color changes */
+.gallery-link:hover,.gallery-link:active,.gallery-link:visited{color:inherit;text-decoration:none}
