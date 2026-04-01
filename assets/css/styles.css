@@ -1,17 +1,72 @@
 :root{
-  --primary-color: #0d6efd; /* default bootstrap primary - replace with your brand primary */
-  --brand-accent: #0b5ed7; /* secondary accent */
-  --muted: #6c757d;
+  /* Night blue / white theme */
+  --primary-color: #071236;      /* deep night blue */
+  --brand-accent: #2b6cff;       /* bright blue accent */
+  --muted: rgba(255,255,255,0.82); /* default muted (for dark backgrounds) */
+  --card-muted: #6c757d;        /* muted color used inside white cards */
   --bg: #ffffff;
   --heading-font: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
   --body-font: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif;
-  --max-content-width: 1100px; /* site content max width for readability */
+  --max-content-width: 1100px;
+  --surface-elev: rgba(255,255,255,0.04);
 }
 
-/* Branding & layout helpers
-   - Replace --primary-color and --brand-accent to match your brand palette.
-   - Consider adding a webfont (e.g., Inter, Source Sans) for a polished look; keep a fallback stack.
-*/
+/* Global page background gradient */
+body{
+  font-family: var(--body-font);
+  color: var(--muted);
+  background: linear-gradient(180deg, var(--primary-color) 0%, #0b2545 100%);
+}
+
+/* Constrain main content for improved reading rhythm */
+.container{max-width:var(--max-content-width)}
+
+/* Header (dark gradient) */
+.site-header{background: linear-gradient(90deg, rgba(2,6,23,0.92) 0%, rgba(7,18,54,0.92) 100%); color: #fff}
+.site-header .navbar-brand .brand-name, .site-header .navbar-brand img{color:#fff}
+
+/* Hero (dark gradient) */
+.hero{background: linear-gradient(180deg, rgba(7,18,54,1) 0%, rgba(5,15,40,0.92) 100%);}
+.hero .display-5, .hero .lead{color: #ecf6ff}
+
+/* Products section (light gradient) */
+#products{background: linear-gradient(180deg,#ffffff 0%, #f4f9ff 100%); color: #0b1f3a}
+#products .text-muted{color:var(--card-muted);opacity:.9}
+
+/* Gallery section (dark gradient) */
+#gallery{background: linear-gradient(180deg, rgba(4,12,38,1) 0%, rgba(7,18,54,1) 100%); color:var(--muted)}
+#gallery .text-muted{color:var(--muted)}
+
+/* Contact (light gradient) */
+#contact{background: linear-gradient(180deg,#ffffff 0%, #f4f9ff 100%); color:#0b1f3a}
+#contact .text-muted{color:var(--card-muted)}
+
+/* Footer (dark gradient) */
+footer{background: linear-gradient(90deg, rgba(3,8,25,1) 0%, rgba(7,18,54,1) 100%); color:#eaf3ff}
+
+/* Brand accents and buttons */
+.btn-primary{
+  background: linear-gradient(90deg,var(--brand-accent) 0%, #5ea2ff 100%);
+  border: none;color: #fff;box-shadow:0 6px 18px rgba(43,108,204,.12);
+}
+
+/* Cards and surfaces */
+.card{background: #fff;border-radius:10px;border:0;box-shadow:0 8px 28px rgba(3,6,23,.06);color:#0b1f3a}
+.card .card-title{color:#071236}
+.card .text-muted{color:var(--card-muted)}
+.card-footer{background:transparent;border-top:0}
+
+/* Gallery tiles sit on dark background; captions should be light */
+.gallery-caption{color:#fff}
+
+/* Adjust nav links contrast on dark header */
+.nav-menu .nav-link{color:#eaf3ff}
+.nav-menu .nav-link.btn{color:#fff}
+
+/* Ensure hero button stands out */
+.hero .btn-light{background:linear-gradient(90deg,#ffffff 0%, #f1f7ff 100%);color:#071236;border:0}
+
+/* Keep other site rules (animations, lightbox, navbar behavior) intact */
 
 body{font-family: var(--body-font);} 
 
